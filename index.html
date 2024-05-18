@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document Object Manipulation</title>
+    </head>
+    <script>
+        function populateDiv(){
+            const a = document.getElementById("first").value;
+            const b = document.getElementById("second").value;
+            // const element = document.getElementById("finalsum")
+            // element.innerHTML= parseInt(a) + parseInt(b)
+
+            // fetch 
+            fetch("https://sum-server.100xdevs.com/sum?a="+a+"&b="+b)
+            .then(function(response){
+                response.text()
+                  .then(function(ans){
+                        document.getElementById("finalsum").innerHTML = ans;
+                    })
+            });
+            // backend is down 
+
+            // console.log(element)
+        }
+    </script>
+    <body>
+        <input id = "first" type="text" placeholder="First-number"><br><br/>
+        <input id = "second" type="text" placeholder="Second-number"><br><br/>
+        <button onclick="populateDiv()">Calculate sum</button><br/>
+        <div id = "finalsum"></div>
+    </body>
+</html>
